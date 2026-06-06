@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coz3erz | Portfolio</title>
+    <style>
+        :root {
+            --bg-main: #0a0a0c;
+            --bg-card: #13131a;
+            --accent-pink: #ff0055;
+            --accent-cyan: #00f0ff;
+            --text-main: #ffffff;
+            --text-sub: #94a3b8;
+            --border: #27272a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Hero Header */
+        header {
+            text-align: center;
+            padding: 80px 20px 40px 20px;
+            background: linear-gradient(180deg, rgba(255, 0, 85, 0.1) 0%, rgba(10, 10, 12, 0) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, var(--accent-pink), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Container & Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            margin-top: 40px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--border);
+        }
+
+        /* Grid Framework for flawless scaling */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* Interactive Showcase Cards */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-pink);
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-cyan);
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .card-desc {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            display: inline-block;
+            text-align: center;
+            background-color: #1e1e24;
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-pink);
+            border-color: var(--accent-pink);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-pink), #cc0044);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        /* Quick Links / Footer Elements */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 600px) {
+            .logo { font-size: 2.2rem; }
+            header { padding: 50px 15px 30px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Coz3erz</div>
+        <div class="subtitle">Independent Game Development • Sound Design & Composition • 3D Modeling Portfolio</div>
+        <div style="margin-top: 25px;">
+            <a href="https://www.youtube.com/channel/UCgrVSt3DLEbO8CEUZxcZgUg" target="_blank" class="btn btn-primary">Visit YouTube Channel</a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Interactive Game & Tech Demos Section -->
+        <section>
+            <h2>Interactive Projects</h2>
+            <div class="grid">
+                <div class="card">
+                    <div>
+                        <div class="card-tag">Game Engine Pipeline</div>
+                        <h3 class="card-title">SPEEDBLITZ</h3>
+                        <p class="card-desc">An interactive game development concept integrating audience input mechanics, built out through live devlogs and custom script compilation.</p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=R_V1so1X4ac" target="_blank" class="btn">Watch Devlog</a>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="card-tag">Physics & Mechanics</div>
+                        <h3 class="card-title">Masterpiece Prototype</h3>
+                        <p class="card-desc">Custom physics architecture exploration. Showcasing structural movement vectors, boundary calculations, and procedural logic mechanics.</p>
+                    </div>
+                    <button class="btn" style="cursor: default; opacity: 0.6;">Tech Build Live</button>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="card-tag">Arcade Mechanics</div>
+                        <h3 class="card-title">flappy crewmate!</h3>
+                        <p class="card-desc">A responsive layout mobile-friendly adaptation of classic physics tap intervals, optimizing state loops and rendering frameworks.</p>
+                    </div>
+                    <button class="btn" style="cursor: default; opacity: 0.6;">Compiled</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Audio Track Compositions Section -->
+        <section>
+            <h2>Original Soundtracks</h2>
+            <div class="grid">
+                <div class="card">
+                    <div>
+                        <div class="card-tag">Chiptune / Arrangement</div>
+                        <h3 class="card-title">SPEEDBLITZ OST</h3>
+                        <p class="card-desc">A complete multi-track digital audio portfolio featuring hand-arranged tracker syntax. Highlighted cuts include "wow is that a boss?" and "arcade guy".</p>
+                    </div>
+                    <a href="https://www.youtube.com/playlist?list=PLdA7idUS5Yqfd-oyTRZbKFug4FNGPMhbv" target="_blank" class="btn">Listen to Full Album</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Footer Matrix -->
+        <footer class="footer-links">
+            <a href="https://www.youtube.com/channel/UCgrVSt3DLEbO8CEUZxcZgUg" target="_blank" class="btn">YouTube</a>
+            <a href="https://github.com/coz3erz1000" target="_blank" class="btn">GitHub Profiles</a>
+        </footer>
+
+    </div>
+
+</body>
+</html>
+
