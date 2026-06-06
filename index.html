@@ -32,6 +32,7 @@
         }
 
         /* Smooth Ambient Glow Backdrops */
+        /* High-vibrancy dynamic fluid background layer */
         .glow-backdrop {
             position: fixed;
             top: 0;
@@ -39,16 +40,29 @@
             width: 100vw;
             height: 100vh;
             z-index: -1;
-            overflow: hidden;
-            background: radial-gradient(circle at 10% 20%, var(--aura-purple) 0%, transparent 50%),
-                        radial-gradient(circle at 90% 80%, var(--aura-blue) 0%, transparent 60%);
-            filter: blur(100px);
-            animation: auraShift 20s ease infinite alternate;
+            background: linear-gradient(
+                135deg, 
+                #030305 0%, 
+                #180a2b 25%, 
+                #051c36 50%, 
+                #3b092b 75%, 
+                #030305 100%
+            );
+            background-size: 400% 400%;
+            animation: lavaLampShift 16s ease infinite alternate;
         }
 
-        @keyframes auraShift {
-            0% { transform: scale(1) rotate(0deg); }
-            100% { transform: scale(1.2) rotate(15deg); }
+        /* Fluid positioning translations simulating liquid lava motions */
+        @keyframes lavaLampShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 50% 100%;
+            }
         }
 
         .scanline {
