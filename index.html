@@ -61,36 +61,41 @@
             opacity: 0.4;
         }
 
-        /* Decreased padding and killed 100vh restriction to remove massive gaps */
+        /* SECTION SPACING MATRIX */
         .screen-pane {
-            min-height: auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 45px 10%;
+            padding: 0 10%;
             position: relative;
-            border-bottom: 1px solid var(--panel-border);
+            /* Long structural distance between Section A and Title B */
+            margin-top: 130px; 
         }
 
-        /* Scroll Animations: Slide in/out dynamically */
-        .slide-trigger {
-            opacity: 0;
-            transform: translateY(40px) scale(0.98);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        .screen-pane:first-of-type {
+            margin-top: 60px;
         }
 
-        .slide-trigger.active {
-            opacity: 1;
-            transform: translateY(0) scale(1);
+        /* Centered Header Layout Configuration */
+        header {
+            text-align: center;
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .hero-left { max-width: 650px; }
-        
+        .manifesto-container {
+            display: inline-block;
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        /* Larger structural distance between Title B and Section B content */
         .pixel-headline {
             font-family: 'Press Start 2P', cursive;
             font-size: 2.2rem;
             line-height: 1.2;
-            margin-bottom: 20px;
+            margin-bottom: 55px; 
             letter-spacing: -1px;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         }
@@ -107,11 +112,22 @@
         }
         .manifesto-list li:hover { color: var(--text-bright); }
 
-        /* Studio Panel Grid */
+        /* Dynamic Scroll Transitions */
+        .slide-trigger {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .slide-trigger.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Locked Layout Grid Gap to 65px */
         .studio-container {
             display: flex;
-            gap: 30px;
-            margin-top: 30px;
+            gap: 65px; 
             flex-wrap: wrap;
         }
 
@@ -133,12 +149,12 @@
             font-size: 0.7rem;
         }
 
-        /* Tightened Project Row Spacing */
+        /* Locked Project Row Gaps to 65px */
         .project-row {
             display: flex;
             align-items: center;
-            gap: 50px;
-            margin-bottom: 70px;
+            gap: 65px; 
+            margin-bottom: 65px; 
             flex-wrap: wrap;
         }
 
@@ -146,6 +162,7 @@
 
         .project-info { flex: 1; min-width: 320px; }
         
+        /* Container fits either img or video elements natively */
         .project-visual {
             flex: 1;
             min-width: 320px;
@@ -159,14 +176,14 @@
             overflow: hidden;
         }
 
-        .project-visual img {
+        .project-visual img, .project-visual video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             opacity: 0.7;
             transition: opacity 0.3s;
         }
-        .project-visual:hover img { opacity: 1; }
+        .project-visual:hover img, .project-visual:hover video { opacity: 1; }
 
         .game-title {
             font-family: 'Press Start 2P', cursive;
@@ -201,8 +218,9 @@
             box-shadow: 0 0 15px rgba(255,255,255,0.3);
         }
 
-        /* Rebuilt Footer Center Block to fill bottom spacing */
+        /* Footer Spacing Module */
         .footer-pane {
+            margin-top: 130px;
             border-top: 1px dashed var(--panel-border);
             padding: 60px 10% 40px 10%;
             text-align: center;
@@ -217,9 +235,9 @@
         }
 
         @media (max-width: 768px) {
-            .pixel-headline { font-size: 1.5rem; }
-            .screen-pane { padding: 30px 6%; }
-            .project-row, .project-row.reverse { text-align: left; flex-direction: column; gap: 20px; margin-bottom: 50px; }
+            .pixel-headline { font-size: 1.5rem; text-align: center; }
+            .screen-pane { padding: 0 6%; margin-top: 80px; }
+            .project-row, .project-row.reverse { text-align: left; flex-direction: column; gap: 30px; margin-bottom: 45px; }
         }
     </style>
 </head>
@@ -228,25 +246,24 @@
     <div class="glow-backdrop"></div>
     <div class="scanline"></div>
 
-    <!-- Section 1: Introduction Profile -->
     <section class="screen-pane">
-        <div class="hero-left slide-trigger">
+        <header class="slide-trigger">
             <h1 class="pixel-headline">HI, I'M COZ3ERZ.</h1>
-            <ul class="manifesto-list">
-                <li>_ INDIE GAME DEVELOPER</li>
-                <li>_ ARTIST AND ANIMATOR</li>
-                <li>_ HORRIBLE MUSIC COMPOSER</li>
-                <li>_ DECENT MECHATRONICS ENGINEER</li>
-                <li>_ PROFESSIONAL IDIOT</li>
-            </ul>
-        </div>
+            <div class="manifesto-container">
+                <ul class="manifesto-list">
+                    <li>_ INDIE GAME DEVELOPER</li>
+                    <li>_ ARTIST AND ANIMATOR</li>
+                    <li>_ HORRIBLE MUSIC COMPOSER</li>
+                    <li>_ DECENT MECHATRONICS ENGINEER</li>
+                    <li>_ PROFESSIONAL IDIOT</li>
+                </ul>
+            </div>
+        </header>
     </section>
 
-    <!-- Section 2: Studio Profiles -->
     <section class="screen-pane">
         <div class="slide-trigger" style="width: 100%;">
-            <h2 class="pixel-headline" style="font-size: 1.6rem;">[STUDIO_LOGS]</h2>
-            <p style="color: var(--text-muted); max-width: 700px; margin-bottom: 20px;">An overview of active developer operations and project divisions.</p>
+            <h2 class="pixel-headline">[STUDIO_LOGS]</h2>
             
             <div class="studio-container">
                 <div class="asymmetric-panel">
@@ -263,12 +280,10 @@
         </div>
     </section>
 
-    <!-- Section 3: Project Engine Pipelines -->
     <section class="screen-pane">
         <div style="width: 100%;">
-            <h2 class="pixel-headline" style="font-size: 1.6rem; margin-bottom: 50px;">[PROJECTS]</h2>
+            <h2 class="pixel-headline">[PROJECTS]</h2>
 
-            <!-- Project 1: SpeedBlitz -->
             <div class="project-row slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">Godot // Rogue-like</div>
@@ -276,12 +291,9 @@
                     <p style="color: var(--text-muted);">A very unfinished rogue-like build utilizing custom collision layers and high-intensity sound loops.</p>
                     <a href="https://coz3erz.itch.io/" target="_blank" class="launch-btn">OPEN ITCH.IO</a>
                 </div>
-                <div class="project-visual">
-                    <img src="1000308739.jpg" alt="SpeedBlitz Asset Capture">
-                </div>
+                <div class="project-visual" id="media-speedblitz"></div>
             </div>
 
-            <!-- Project 2: Masterpiece Prototype -->
             <div class="project-row reverse slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">Godot // Platformer Framework</div>
@@ -289,12 +301,9 @@
                     <p style="color: var(--text-muted);">A basic platformer exploration. Testing gravity interpolation variables, boundary checks, and tile rendering speeds.</p>
                     <a href="https://coz3erz.itch.io/" target="_blank" class="launch-btn">OPEN ITCH.IO</a>
                 </div>
-                <div class="project-visual">
-                    <img src="1000308738.jpg" alt="Masterpiece Asset Capture">
-                </div>
+                <div class="project-visual" id="media-masterpiece"></div>
             </div>
 
-            <!-- Project 3: Sonic Coz -->
             <div class="project-row slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">GX Games // Vector Sandbox</div>
@@ -302,12 +311,9 @@
                     <p style="color: var(--text-muted);">Run through this surprisingly fun map while getting chased by, space alien things? Oh yeah and you can shoot lasers and there's these space trampolines. no new versions coming soon.</p>
                     <a href="https://gx.games/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
-                <div class="project-visual">
-                    <img src="1000308737.jpg" alt="Sonic Coz Asset Capture">
-                </div>
+                <div class="project-visual" id="media-sonic"></div>
             </div>
 
-            <!-- Project 4: Flappy Crewmate -->
             <div class="project-row reverse slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">State Loop // Arcade</div>
@@ -315,12 +321,9 @@
                     <p style="color: var(--text-muted);">You're another Astronaut lost in the cosmos, this time, equipped with a jetpack. And for some reason there's these random pipes in space. Flap through this infinitely generated expanse of pipes. V(1.0.0), no new versions releasing soon.</p>
                     <a href="https://gx.games/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
-                <div class="project-visual">
-                    <img src="1000308735.jpg" alt="Flappy Crewmate Asset Capture">
-                </div>
+                <div class="project-visual" id="media-flappy"></div>
             </div>
 
-            <!-- Project 5: Baldi's Basics Scuffed -->
             <div class="project-row slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">Raycasting // Pathfinding</div>
@@ -328,12 +331,9 @@
                     <p style="color: var(--text-muted);">You sneak into the school at night at night. Baldi is furious. Principle is sleepy and can't see but can still hear you running. Do you have the guts to get your friends 10 notebooks and get out of there? Super unfinished and crashes btw lol. Utilising raycasters with real-time pathfinding.</p>
                     <a href="https://gx.games/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
-                <div class="project-visual">
-                    <img src="1000308736.jpg" alt="Baldi Asset Capture">
-                </div>
+                <div class="project-visual" id="media-baldi"></div>
             </div>
 
-            <!-- Project 6: Voyage -->
             <div class="project-row reverse slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">GX Games // Infinite Generative</div>
@@ -341,15 +341,12 @@
                     <p style="color: var(--text-muted);">You're a Astronaut lost in the cosmos, given a job to redirect missiles towards the threatening blackhole TON-618. humanity's fate rest in your hands. Will you overcome the hurdles of asteroids and planets. Or succumb to death? Fly through this infinitely generated game while avoiding wormholes, exploding stars, asteroids, and pick up cool power-ups along the way. V(1.0.0) coming soon or maybe never.</p>
                     <a href="https://gx.games/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
-                <div class="project-visual">
-                    <img src="1000308734.jpg" alt="Voyage Asset Capture">
-                </div>
+                <div class="project-visual" id="media-voyage"></div>
             </div>
 
         </div>
     </section>
 
-    <!-- Section 4: Improved Full-Width Footer Platform -->
     <footer class="footer-pane slide-trigger">
         <h2 class="pixel-headline" style="font-size: 1.5rem; margin-bottom: 10px;">[UPLINK]</h2>
         <p style="color: var(--text-muted);">Content updates hosted on YouTube. Contact accessible via Discord handles.</p>
@@ -362,8 +359,35 @@
         <p style="font-family: 'Press Start 2P'; font-size: 0.6rem; color: rgba(255,255,255,0.15); margin-top: 50px; letter-spacing: 1px;">COZ3ERZ // PORTFOLIO COMPLETE</p>
     </footer>
 
-    <!-- Native Scroll Visibility Script -->
     <script>
+        // =================================================================
+        // GLOBAL MEDIA VARIABLE DECK (EDIT YOUR LINKS AND VIDEO FILES HERE)
+        // =================================================================
+        const GLOBAL_MEDIA_ASSETS = {
+            speedblitz: "1000308739.jpg",      // Acceptable files: .mp4, .webm, .jpg, .png
+            masterpiece: "1000308738.jpg",     // Just paste the file name or complete link
+            sonic: "1000308737.jpg",
+            flappy: "1000308735.jpg",
+            baldi: "1000308736.jpg",
+            voyage: "1000308734.jpg"
+        };
+
+        // Automatic Video Injection Engine
+        Object.keys(GLOBAL_MEDIA_ASSETS).forEach(key => {
+            const container = document.getElementById(`media-${key}`);
+            if (!container) return;
+            
+            const srcPath = GLOBAL_MEDIA_ASSETS[key].trim();
+            const isVideo = /\.(mp4|webm|ogg|mov|m4v)$/i.test(srcPath);
+
+            if (isVideo) {
+                container.innerHTML = `<video src="${srcPath}" autoplay loop muted playsinline></video>`;
+            } else {
+                container.innerHTML = `<img src="${srcPath}" alt="${key} showcase structural display">`;
+            }
+        });
+
+        // Dynamic Viewport Visibility Observer Setup
         const animatedElements = document.querySelectorAll('.slide-trigger');
 
         const scrollCheck = () => {
@@ -371,11 +395,9 @@
                 const elementTop = el.getBoundingClientRect().top;
                 const elementBottom = el.getBoundingClientRect().bottom;
                 
-                // Active threshold check when moving into screen borders
                 if (elementTop <= (window.innerHeight || document.documentElement.clientHeight) * 0.9) {
                     el.classList.add('active');
                 }
-                // Pulls clean away if completely scrolled off-view
                 if (elementBottom < 0 || elementTop > (window.innerHeight || document.documentElement.clientHeight)) {
                     el.classList.remove('active');
                 }
@@ -383,172 +405,7 @@
         };
 
         window.addEventListener('scroll', scrollCheck);
-        scrollCheck(); // Primary frame evaluation
-    </script>
-</body>
-</html>
-        /* Bio List Framework */
-        .bio-list { list-style: none; font-size: 1.1rem; font-weight: 300; color: #a1a1aa; display: flex; flex-direction: column; gap: 4px; }
-        .bio-list li::before { content: "> "; color: var(--neon-blue); font-weight: bold; }
-
-        /* FIXED ASYMMETRIC GRID FLOW */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 20px;
-        }
-
-        .section-label { grid-column: span 12; font-family: 'Press Start 2P', cursive; font-size: 0.75rem; color: var(--p5-red); margin: 25px 0 10px; text-transform: uppercase; letter-spacing: 1px; }
-
-        .card {
-            background: var(--glass);
-            border: 1px solid rgba(255,255,255,0.08);
-            backdrop-filter: blur(12px);
-            padding: 25px;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            opacity: 0;
-            transform: translateY(25px);
-        }
-
-        /* Intersection Observer entry style */
-        .card.active { opacity: 1; transform: translateY(0); }
-        .card:hover { border-color: var(--neon-blue); background: rgba(255,255,255,0.05); box-shadow: 0 0 15px var(--border-glow); }
-
-        /* Content spacing logic */
-        .card.large { grid-column: span 7; }
-        .card.small { grid-column: span 5; }
-        .card.medium { grid-column: span 6; }
-
-        @media (max-width: 768px) {
-            .card.large, .card.small, .card.medium { grid-column: span 12 !important; margin-top: 0 !important; }
-            .glitch-text { font-size: 1.8rem; }
-        }
-
-        .card-title { font-family: 'Press Start 2P', cursive; font-size: 0.8rem; margin-bottom: 12px; display: block; color: var(--neon-blue); }
-        .card-desc { font-size: 0.95rem; color: #bcbcbc; font-weight: 300; }
-        
-        /* Image configuration mapped to your assets */
-        .card-img { width: 100%; height: 160px; background: #09090b; margin-bottom: 15px; object-fit: cover; border: 1px solid rgba(255,255,255,0.05); }
-
-        .btn { display: inline-block; margin-top: 15px; padding: 8px 14px; border: 1px solid #fff; color: #fff; text-decoration: none; font-family: 'Press Start 2P', cursive; font-size: 0.55rem; transition: all 0.2s ease; }
-        .btn:hover { background: #fff; color: #000; box-shadow: 0 0 8px #fff; }
-
-        /* SYSTEM TERMINAL UPLINK // FOOTER */
-        .terminal-footer {
-            grid-column: span 12;
-            background: rgba(230, 0, 60, 0.02);
-            border: 1px dashed rgba(255, 0, 60, 0.2);
-            padding: 30px;
-            margin-top: 40px;
-            text-align: center;
-        }
-        .terminal-label { font-family: 'Press Start 2P', cursive; font-size: 0.7rem; color: var(--p5-red); margin-bottom: 15px; display: block; }
-        
-        .link-wrapper { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .term-btn { font-family: 'Press Start 2P', cursive; font-size: 0.6rem; color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.15); padding: 10px 20px; transition: all 0.2s ease; }
-        .term-btn:hover { border-color: var(--neon-blue); color: var(--neon-blue); background: rgba(0, 210, 255, 0.02); }
-
-    </style>
-</head>
-<body>
-
-    <div class="flare-1"></div>
-    <div class="flare-2"></div>
-
-    <div class="container">
-        <header>
-            <h1 class="glitch-text">Coz3erz</h1>
-            <ul class="bio-list">
-                <li>Indie game developer</li>
-                <li>Artist and animator</li>
-                <li>Horrible music composer</li>
-                <li>Decent Mechatronics engineer</li>
-                <li>Professional idiot</li>
-            </ul>
-        </header>
-
-        <div class="grid">
-            <div class="section-label">System // Studios</div>
-            
-            <div class="card medium scroll-trigger">
-                <span class="card-title">CODETH Studios</span>
-                <p class="card-desc">Founded June 1, 2024. A hub of talents across multiple art forms: houses 3 musicians, 2 artists, 1 writer, 1 3D modeler, and 3 programmers operating across creative layers.</p>
-            </div>
-
-            <div class="card medium scroll-trigger" style="margin-top: 20px;">
-                <span class="card-title">Team Masterpiece</span>
-                <p class="card-desc">Founded and assembled during July-August 2024. The core creative collective behind the engineering loop and architecture of the upcoming game Masterpiece.</p>
-            </div>
-
-            <div class="section-label">Deployments // Project Matrix</div>
-
-            <div class="card large scroll-trigger">
-                <img src="1000308739.jpg" class="card-img" alt="SpeedBlitz">
-                <span class="card-title">SpeedBlitz (Beta)</span>
-                <p class="card-desc">A very unfinished rogue-like build utilizing rapid procedural parameters and high-intensity structural state mechanics.</p>
-                <a href="https://coz3erz.itch.io/" target="_blank" class="btn">LAUNCH ON ITCH.IO</a>
-            </div>
-
-            <div class="card small scroll-trigger" style="margin-top: 35px;">
-                <img src="1000308735.jpg" class="card-img" alt="Flappy Crewmate">
-                <span class="card-title">Flappy Crewmate</span>
-                <p class="card-desc">Astronaut mechanics meet infinite generation loops. Flap through an infinitely generated expanse of pipes inside cosmic spatial vectors.</p>
-                <a href="https://gx.games/" target="_blank" class="btn">LAUNCH ON GX</a>
-            </div>
-
-            <div class="card small scroll-trigger">
-                <img src="1000308734.jpg" class="card-img" alt="Voyage">
-                <span class="card-title">Voyage</span>
-                <p class="card-desc">Redirect missile configurations toward the threatening blackhole singularity TON-618. Overcome asteroid vectors or succumb to systems failure.</p>
-                <a href="https://gx.games/" target="_blank" class="btn">LAUNCH ON GX</a>
-            </div>
-
-            <div class="card large scroll-trigger" style="margin-top: -15px;">
-                <img src="1000308738.jpg" class="card-img" alt="Masterpiece Prototype">
-                <span class="card-title">Masterpiece Prototype</span>
-                <p class="card-desc">A basic, smooth-scrolling physics engine platformer testing collision detection layers, boundary bounds, and structural code behavior.</p>
-                <a href="https://coz3erz.itch.io/" target="_blank" class="btn">LAUNCH ON ITCH.IO</a>
-            </div>
-
-            <div class="card large scroll-trigger">
-                <img src="1000308736.jpg" class="card-img" alt="Baldi's Basics: Scuffed">
-                <span class="card-title">Baldi's Basics: Scuffed</span>
-                <p class="card-desc">A complex remake loop utilizing active raycasters paired with real-time enemy pathfinding matrices. Highly difficult configuration parameters.</p>
-                <a href="https://gx.games/" target="_blank" class="btn">LAUNCH ON GX</a>
-            </div>
-
-            <div class="card small scroll-trigger" style="margin-top: 15px;">
-                <img src="1000308737.jpg" class="card-img" alt="Sonic Coz">
-                <span class="card-title">Sonic Coz</span>
-                <p class="card-desc">Run through map structures while managing space alien tracking, custom laser triggers, and velocity-boosting trampoline points.</p>
-                <a href="https://gx.games/" target="_blank" class="btn">LAUNCH ON GX</a>
-            </div>
-
-            <div class="terminal-footer scroll-trigger">
-                <span class="terminal-label">// COZ3ERZ_SYSTEM_UPLINK_SUCCESSFUL</span>
-                <div class="link-wrapper">
-                    <a href="https://www.youtube.com/channel/UCgrVSt3DLEbO8CEUZxcZgUg" target="_blank" class="term-btn">YOUTUBE</a>
-                    <a href="https://coz3erz.itch.io/" target="_blank" class="term-btn">ITCH.IO</a>
-                    <a href="https://gx.games/" target="_blank" class="term-btn">GX.GAMES</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Highly optimized scroll visibility handler
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.05 }); // Lower threshold means elements slide in early and smooth
-
-        document.querySelectorAll('.scroll-trigger').forEach(card => {
-            observer.observe(card);
-        });
+        scrollCheck(); // Fire on page loading loop
     </script>
 </body>
 </html>
