@@ -3,415 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COZ3ERZ // SYSTEM_OVERRIDE</title>
-    <!-- Importing Bold Cyberpunk & Persona-Style Typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@700;900&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
-    
+    <title>COZ3ERZ // PORTFOLIO</title>
+    <!-- Pixel Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #050508;
-            --p5-red: #e60012;
-            --cyber-cyan: #00f0ff;
-            --panel-dark: #101016;
-            --text-bright: #ffffff;
-            --text-dark: #8f9cae;
-            --slant-angle: -3deg;
+            --bg-dark: #0f0c29;
+            --accent-purple: #302b63;
+            --accent-blue: #24243e;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-main: #e0e0e0;
+            --text-accent: #ff00ff;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        /* Lofi Cloud Background Animation */
         body {
-            background-color: var(--bg-deep);
-            color: var(--text-bright);
-            font-family: 'Space Grotesk', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, var(--bg-dark), var(--accent-purple), var(--accent-blue));
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            color: var(--text-main);
+            font-family: 'VT323', monospace;
             overflow-x: hidden;
-            perspective: 1px;
-            transform-style: preserve-3d;
         }
 
-        /* Pure CSS Parallax Background Elements */
-        .parallax-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(rgba(230, 0, 18, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(230, 0, 18, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            transform: translateZ(-1px) scale(2);
-            z-index: -1;
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        /* Persona Asymmetric Header */
-        header {
-            position: relative;
-            padding: 120px 20px 80px 20px;
-            background: #000;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
-            border-bottom: 4px solid var(--p5-red);
-            text-align: left;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px; }
 
-        .brand-title {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 4.5rem;
-            line-height: 0.9;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            background: linear-gradient(90deg, #fff 70%, var(--p5-red) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transform: skewX(-5deg);
-        }
-
-        .status-marquee {
-            display: inline-block;
-            background: var(--p5-red);
-            color: #fff;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.4rem;
-            padding: 4px 16px;
-            margin-top: 15px;
-            transform: rotate(-1.5deg) skewX(-10deg);
-            letter-spacing: 1px;
-        }
-
-        .intro-subtitles {
-            margin-top: 30px;
-            font-size: 1.1rem;
-            max-width: 650px;
-            color: var(--text-dark);
-        }
-
-        .intro-subtitles span {
-            display: block;
-            margin-bottom: 5px;
-            border-left: 3px solid var(--cyber-cyan);
-            padding-left: 10px;
-        }
-
-        /* Dynamic Scroll Animation Utility Classes */
-        .scroll-slide {
-            opacity: 0;
-            transform: translateX(-100px) skewX(-5deg);
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
-        }
-
-        .scroll-slide.right-origin {
-            transform: translateX(100px) skewX(5deg);
-        }
-
-        /* Triggers instantly when entering view, reverts when out */
-        .scroll-slide.active {
-            opacity: 1;
-            transform: translateX(0) skewX(0deg);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        section {
-            margin-bottom: 80px;
-        }
-
-        .section-header {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            letter-spacing: 2px;
-            color: #fff;
-            text-transform: uppercase;
-            border-bottom: 2px dashed #222;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
-
-        .section-header span {
-            color: var(--p5-red);
-        }
-
-        /* Asymmetric Layout Grid */
-        .studio-box {
-            background: var(--panel-dark);
-            border-left: 5px solid var(--p5-red);
+        h1, h2 { font-family: 'Press Start 2P', cursive; color: #fff; margin-bottom: 30px; }
+        
+        /* NotebookLM-style Cards */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
             padding: 30px;
-            border-radius: 0 16px 16px 0;
-            margin-bottom: 25px;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--text-accent);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .studio-box::before {
-            content: '';
-            position: absolute;
-            right: -20px;
-            bottom: -20px;
-            width: 80px;
-            height: 80px;
-            background: rgba(230, 0, 18, 0.05);
-            transform: rotate(45deg);
-        }
+        .card.visible { opacity: 1; transform: translateY(0); }
 
-        .studio-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            color: #fff;
-        }
+        .game-thumb { width: 100%; height: 200px; background: #000; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #555; }
 
-        /* Responsive Project Cards Grid */
-        .project-matrix {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .project-card {
-            background: linear-gradient(135deg, #111116 0%, #09090c 100%);
-            border: 1px solid #222;
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            border-color: var(--cyber-cyan);
-            box-shadow: -5px 5px 0px var(--cyber-cyan);
-            transform: translate(5px, -5px);
-        }
-
-        .tag {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            color: var(--p5-red);
-            margin-bottom: 10px;
-        }
-
-        .project-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-        }
-
-        .project-desc {
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            line-height: 1.5;
-            margin-bottom: 25px;
-            flex-grow: 1;
-        }
-
-        .action-link {
-            display: inline-block;
-            width: 100%;
-            text-align: center;
-            background: #fff;
-            color: #000;
-            text-decoration: none;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.3rem;
-            padding: 8px 0;
-            letter-spacing: 1px;
-            font-weight: bold;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-
-        .project-card:hover .action-link {
-            background: var(--cyber-cyan);
-            color: #000;
-        }
-
-        /* Footer styling */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid #111;
-        }
-
-        .footer-btn {
-            display: inline-block;
-            margin: 10px;
-            padding: 8px 24px;
-            border: 1px solid var(--text-dark);
-            color: var(--text-bright);
-            text-decoration: none;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.2rem;
-            transition: all 0.2s ease;
-        }
-
-        .footer-btn:hover {
-            border-color: var(--p5-red);
-            background-color: var(--p5-red);
-        }
-
-        @media (max-width: 768px) {
-            .brand-title { font-size: 2.8rem; }
-            header { padding: 80px 15px 50px 15px; }
-        }
+        .btn { display: inline-block; padding: 10px 20px; border: 1px solid var(--text-accent); color: var(--text-accent); text-decoration: none; font-family: 'Press Start 2P', cursive; font-size: 0.6rem; margin-top: 10px; }
+        .btn:hover { background: var(--text-accent); color: #fff; }
     </style>
 </head>
 <body>
 
-    <div class="parallax-bg"></div>
-
-    <!-- Layout source pulled from main profile structure in file 1000308730.jpg -->
-    <header>
-        <div class="brand-title">COZ3ERZ</div>
-        <div class="status-marquee">CORE ENG // MECHATRONICS SYNCED</div>
-        <div class="intro-subtitles">
-            <span>Indie Game Developer</span>
-            <span>Artist & Animator</span>
-            <span>Digital Music Composer</span>
-        </div>
-    </header>
-
-    <div class="container">
-
-        <!-- Groups content from the studio breakdown slide in file 1000308741.jpg -->
-        <section class="scroll-slide">
-            <h2 class="section-header">Structure // <span>Studios & Collective</span></h2>
-            
-            <div class="studio-box">
-                <h3 class="studio-title">CODETH Studios</h3>
-                <p style="color: var(--text-dark); font-size: 0.95rem;">Founded June 1, 2024. Active collective housing specialized development lanes: 3 musicians, 2 artists, 1 writer, 1 3D modeler, and 3 programmers operating across system frameworks.</p>
-            </div>
-
-            <div class="studio-box" style="border-left-color: var(--cyber-cyan);">
-                <h3 class="studio-title">Team Masterpiece</h3>
-                <p style="color: var(--text-dark); font-size: 0.95rem;">Assembled July-August 2024. Core creative assembly dedicated to the underlying infrastructure, runtime loops, and implementation of project Masterpiece.</p>
-            </div>
-        </section>
-
-        <!-- Dynamic compilation of all games visible across files 1000308734.jpg to 1000308739.jpg -->
-        <section>
-            <h2 class="section-header">Software // <span>Project Matrix</span></h2>
-            <div class="project-matrix">
-
-                <!-- Details from image 1000308739.jpg -->
-                <div class="project-card scroll-slide">
-                    <div>
-                        <div class="tag">GODOT // ROGUELIKE</div>
-                        <h3 class="project-title">SpeedBlitz (Beta)</h3>
-                        <p class="project-desc">Procedurally generated dungeon parameters featuring custom multi-layered chiptune trackers and dynamic collision grids.</p>
-                    </div>
-                    <a href="https://coz3erz.itch.io/" target="_blank" class="action-link">LAUNCH ON ITCH.IO</a>
-                </div>
-
-                <!-- Details from image 1000308738.jpg -->
-                <div class="project-card scroll-slide right-origin">
-                    <div>
-                        <div class="tag">GODOT // ENGINE PROTOTYPE</div>
-                        <h3 class="project-title">Masterpiece</h3>
-                        <p class="project-desc">A deep exploration into custom platformer physics frameworks, boundary configurations, and structural vector movement loops.</p>
-                    </div>
-                    <a href="https://coz3erz.itch.io/" target="_blank" class="action-link">LAUNCH ENGINE BUILD</a>
-                </div>
-
-                <!-- Details from image 1000308736.jpg -->
-                <div class="project-card scroll-slide">
-                    <div>
-                        <div class="tag">RAYCASTING // 3D RENDERING</div>
-                        <h3 class="project-title">Baldi's Basics: Scuffed</h3>
-                        <p class="project-desc">Custom implementation of 3D raycasting mechanics paired with real-time pathfinding algorithms. Highly volatile layout build.</p>
-                    </div>
-                    <a href="https://gx.games/" target="_blank" class="action-link">LAUNCH DEPLOYMENT</a>
-                </div>
-
-                <!-- Details from image 1000308734.jpg -->
-                <div class="project-card scroll-slide right-origin">
-                    <div>
-                        <div class="tag">GX RENDER // COSMOS ITERATION</div>
-                        <h3 class="project-title">Voyage</h3>
-                        <p class="project-desc">Infinite generative runtime system tracking gravitational vectors and projectile paths towards a simulated TON-618 singularity.</p>
-                    </div>
-                    <a href="https://gx.games/" target="_blank" class="action-link">LAUNCH RUNTIME</a>
-                </div>
-
-                <!-- Details from image 1000308735.jpg -->
-                <div class="project-card scroll-slide">
-                    <div>
-                        <div class="tag">STATE LOOPS // ARCADE MECHANICS</div>
-                        <h3 class="project-title">Flappy Crewmate</h3>
-                        <p class="project-desc">Cross-pollination arcade experiment integrating random procedural tube generation with rapid impulse physics values.</p>
-                    </div>
-                    <a href="https://gx.games/" target="_blank" class="action-link">LAUNCH SECTOR</a>
-                </div>
-
-                <!-- Details from image 1000308737.jpg -->
-                <div class="project-card scroll-slide right-origin">
-                    <div>
-                        <div class="tag">MAP MATRIX // VECTOR LAUNCH</div>
-                        <h3 class="project-title">Sonic Coz</h3>
-                        <p class="project-desc">Experimental map tracking module featuring acceleration layers, projectile configurations, and custom spring-board velocity tables.</p>
-                    </div>
-                    <a href="https://gx.games/" target="_blank" class="action-link">LAUNCH MATRIX</a>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Social references integrated from file 1000308731.jpg -->
-        <section class="scroll-slide" style="text-align: center;">
-            <h2 class="section-header" style="border: none;">Terminal // <span>Uplink</span></h2>
-            <p style="color: var(--text-dark); margin-bottom: 30px;">System operational. Access internal lanes or ping via main developer handles.</p>
-            <div>
-                <a href="https://www.youtube.com/channel/UCgrVSt3DLEbO8CEUZxcZgUg" target="_blank" class="footer-btn">YOUTUBE DECHIPS</a>
-                <a href="#" class="footer-btn">DISCORD TERMINAL</a>
-            </div>
-        </section>
-
+<div class="container">
+    <h1 style="text-align: center; font-size: 2rem;">Hi, I'm Coz3erz.</h1>
+    
+    <div class="card">
+        <p>Indie game developer, Artist and animator, Horrible music composer, Decent Mechatronics engineer, Professional idiot.</p>
     </div>
 
-    <footer>
-        <p style="font-size: 0.8rem; color: #333; font-family: 'Orbitron', sans-serif;">COZ3ERZ © 2026 // ALL SYSTEM LOGS VERIFIED</p>
-    </footer>
+    <h2>Studios</h2>
+    <div class="card">
+        <h3>CODETH Studios</h3>
+        <p>Founded June 1, 2024. A hub of talented art forms: 3 musicians, 2 artists, 1 writer, 1 modeler, 3 programmers.</p>
+    </div>
+    <div class="card">
+        <h3>Team Masterpiece</h3>
+        <p>Assembled July-August 2024. The creative minds behind project Masterpiece.</p>
+    </div>
 
-    <!-- Native Scroll Slide-In/Out Interface Logic -->
-    <script>
-        const scrollElements = document.querySelectorAll('.scroll-slide');
+    <h2>Projects</h2>
+    
+    <!-- Game Card Example -->
+    <div class="card">
+        <div class="game-thumb">IMAGE_PLACEHOLDER_SPEEDBLITZ</div>
+        <h3>SpeedBlitz (Beta)</h3>
+        <p>A very unfinished rogue-like. High energy, chiptune-heavy.</p>
+        <a href="#" class="btn">PLAY NOW</a>
+    </div>
 
-        const elementInView = (el, dividend = 1) => {
-            const elementTop = el.getBoundingClientRect().top;
-            return (elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend);
-        };
+    <div class="card">
+        <div class="game-thumb">IMAGE_PLACEHOLDER_VOYAGE</div>
+        <h3>Voyage</h3>
+        <p>Redirect missiles towards TON-618. Infinitely generated space mission.</p>
+        <a href="#" class="btn">PLAY NOW</a>
+    </div>
+</div>
 
-        const elementOutofView = (el) => {
-            const elementTop = el.getBoundingClientRect().top;
-            return (elementTop > (window.innerHeight || document.documentElement.clientHeight));
-        };
-
-        const handleScrollAnimation = () => {
-            scrollElements.forEach((el) => {
-                if (elementInView(el, 1.15)) {
-                    el.classList.add('active');
-                } else if (elementOutofView(el)) {
-                    el.classList.remove('active'); // Pulls out when scrolled away
-                }
-            });
-        }
-
-        window.addEventListener('scroll', () => { 
-            handleScrollAnimation();
+<script>
+    // Scroll Animation Logic
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
         });
+    });
+    document.querySelectorAll('.card').forEach(c => observer.observe(c));
+</script>
 
-        // Trigger on initial page load check
-        handleScrollAnimation();
-    </script>
 </body>
 </html>
