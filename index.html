@@ -68,7 +68,6 @@
             justify-content: center;
             padding: 0 10%;
             position: relative;
-            /* Long structural distance between the end of a section and the next title */
             margin-top: 130px; 
         }
 
@@ -76,13 +75,16 @@
             margin-top: 60px;
         }
 
-        /* Centered Header Layout Configuration */
+        /* Perfectly Centered Main Header Presentation */
         header {
             text-align: center;
             position: relative;
             max-width: 800px;
             margin: 0 auto;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .manifesto-container {
@@ -96,10 +98,10 @@
             font-family: 'Press Start 2P', cursive;
             font-size: 2.2rem;
             line-height: 1.2;
-            margin-bottom: 65px; /* Larger space between heading and content elements */
+            margin-bottom: 65px; 
             letter-spacing: -1px;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-            text-align: center; /* Forces absolute centering on all page headings */
+            text-align: center; 
             width: 100%;
         }
 
@@ -127,11 +129,11 @@
             transform: translateY(0) scale(1);
         }
 
-        /* Locked Layout Grid Gap to 65px */
+        /* Studio Panel Layout */
         .studio-container {
             display: flex;
-            gap: 65px; 
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 45px; 
             width: 100%;
         }
 
@@ -139,8 +141,7 @@
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid var(--panel-border);
             padding: 35px;
-            flex: 1;
-            min-width: 300px;
+            width: 100%;
             position: relative;
         }
         
@@ -167,7 +168,6 @@
 
         .project-info { flex: 1; min-width: 320px; }
         
-        /* Container fits either img or video elements natively */
         .project-visual {
             flex: 1;
             min-width: 320px;
@@ -223,7 +223,7 @@
             box-shadow: 0 0 15px rgba(255,255,255,0.3);
         }
 
-        /* Footer Spacing Module */
+        /* Standardized Clean Contact Footer */
         .footer-pane {
             margin-top: 130px;
             border-top: 1px dashed var(--panel-border);
@@ -239,6 +239,13 @@
             flex-wrap: wrap;
         }
 
+        .tiny-grey-text {
+            color: #4b5563;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            display: block;
+        }
+
         @media (max-width: 768px) {
             .pixel-headline { font-size: 1.5rem; text-align: center; }
             .screen-pane { padding: 0 6%; margin-top: 80px; }
@@ -251,7 +258,7 @@
     <div class="glow-backdrop"></div>
     <div class="scanline"></div>
 
-    <!-- Section 1: Centered Header Presentation -->
+    <!-- Section 1: Centered Introduction Core -->
     <section class="screen-pane">
         <header class="slide-trigger">
             <h1 class="pixel-headline">HI, I'M COZ3ERZ.</h1>
@@ -267,27 +274,7 @@
         </header>
     </section>
 
-    <!-- Section 2: Studio Specifications -->
-    <section class="screen-pane">
-        <div class="slide-trigger" style="width: 100%;">
-            <h2 class="pixel-headline">[STUDIO_LOGS]</h2>
-            
-            <div class="studio-container">
-                <div class="asymmetric-panel">
-                    <h3 class="game-title" style="font-size: 1.1rem;">CODETH studios</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 15px;">Founded on the 1st of June of 2024. CODETH studios is a hub of people who are talented in many art forms, we have 3 musicians, 2 artists, one writer, one 3d modeller, 3 programmers.</p>
-                    <p style="font-size: 1.1rem; color: rgba(255,255,255,0.15);">// many of the people in CODETH studios are inactive and they have a life. So it doesn't have many major games under development, yet.</p>
-                </div>
-                <div class="asymmetric-panel">
-                    <h3 class="game-title" style="font-size: 1.1rem;">Team Masterpiece</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 15px;">Founded and assembled during july-august of 2024.</p>
-                    <p style="color: var(--text-muted);">Team Masterpiece is the hub of the creative minds behind the upcoming game Masterpiece. This team consists of: Coz3erz (head of programming, handles art and animation, handles music composition)</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 3: Asymmetric Project Stream -->
+    <!-- Section 2: Projects Stream -->
     <section class="screen-pane">
         <div style="width: 100%;">
             <h2 class="pixel-headline">[PROJECTS]</h2>
@@ -297,7 +284,7 @@
                 <div class="project-info">
                     <div class="game-meta">Godot // Rogue-like</div>
                     <h3 class="game-title">SpeedBlitz (Beta)</h3>
-                    <p style="color: var(--text-muted);">A very unfinished rogue-like build utilizing custom collision layers and high-intensity sound loops.</p>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">A very unfinished rogue-like build utilizing custom collision layers and high-intensity sound loops.</p>
                     <a href="YOUR_SPEEDBLITZ_ITCH_LINK_HERE" target="_blank" class="launch-btn">OPEN ITCH.IO</a>
                 </div>
                 <div class="project-visual" id="media-speedblitz"></div>
@@ -308,7 +295,7 @@
                 <div class="project-info">
                     <div class="game-meta">Godot // Platformer Framework</div>
                     <h3 class="game-title">Masterpiece Prototype</h3>
-                    <p style="color: var(--text-muted);">A basic platformer exploration. Testing gravity interpolation variables, boundary checks, and tile rendering speeds.</p>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">A basic platformer exploration. Testing gravity interpolation variables, boundary checks, and tile rendering speeds.</p>
                     <a href="YOUR_MASTERPIECE_ITCH_LINK_HERE" target="_blank" class="launch-btn">OPEN ITCH.IO</a>
                 </div>
                 <div class="project-visual" id="media-masterpiece"></div>
@@ -319,8 +306,8 @@
                 <div class="project-info">
                     <div class="game-meta">GX Games // Vector Sandbox</div>
                     <h3 class="game-title">Sonic coz</h3>
-                    <p style="color: var(--text-muted);">Run through this surprisingly fun map while getting chased by, space alien things? Oh yeah and you can shoot lasers and there's these space trampolines. no new versions coming soon.</p>
-                    <a href="YOUR_SONIC_COZ_GX_LINK_HERE" target="_blank" class="launch-btn">OPEN GX GAMES</a>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">Run through this surprisingly fun map while getting chased by, space alien things? Oh yeah and you can shoot lasers and there's these space trampolines. no new versions coming soon.</p>
+                    <a href="https://gx.me/Coz3erz/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
                 <div class="project-visual" id="media-sonic"></div>
             </div>
@@ -330,8 +317,8 @@
                 <div class="project-info">
                     <div class="game-meta">State Loop // Arcade</div>
                     <h3 class="game-title">flappy crewmate!</h3>
-                    <p style="color: var(--text-muted);">You're another Astronaut lost in the cosmos, this time, equipped with a jetpack. And for some reason there's these random pipes in space. Flap through this infinitely generated expanse of pipes. V(1.0.0), no new versions releasing soon.</p>
-                    <a href="YOUR_FLAPPY_CREWMATE_GX_LINK_HERE" target="_blank" class="launch-btn">OPEN GX GAMES</a>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">You're another Astronaut lost in the cosmos, this time, equipped with a jetpack. And for some reason there's these random pipes in space. Flap through this infinitely generated expanse of pipes. V(1.0.0), no new versions releasing soon.</p>
+                    <a href="https://gx.me/Coz3erz/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
                 <div class="project-visual" id="media-flappy"></div>
             </div>
@@ -341,8 +328,8 @@
                 <div class="project-info">
                     <div class="game-meta">Raycasting // Pathfinding</div>
                     <h3 class="game-title">Baldi's basics: SCUFFED EDITION</h3>
-                    <p style="color: var(--text-muted);">You sneak into the school at night at night. Baldi is furious. Principle is sleepy and can't see but can still hear you running. Do you have the guts to get your friends 10 notebooks and get out of there? Super unfinished and crashes btw lol. Utilising raycasters with real-time pathfinding.</p>
-                    <a href="YOUR_BALDI_SCUFFED_GX_LINK_HERE" target="_blank" class="launch-btn">OPEN GX GAMES</a>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">You sneak into the school at night at night. Baldi is furious. Principle is sleepy and can't see but can still hear you running. Do you have the guts to get your friends 10 notebooks and get out of there? Super unfinished and crashes btw lol. Utilising raycasters with real-time pathfinding.</p>
+                    <a href="https://gx.me/Coz3erz/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
                 <div class="project-visual" id="media-baldi"></div>
             </div>
@@ -352,8 +339,8 @@
                 <div class="project-info">
                     <div class="game-meta">GX Games // Infinite Generative</div>
                     <h3 class="game-title">Voyage</h3>
-                    <p style="color: var(--text-muted);">You're a Astronaut lost in the cosmos, given a job to redirect missiles towards the threatening blackhole TON-618. humanity's fate rest in your hands. Will you overcome the hurdles of asteroids and planets. Or succumb to death? Fly through this infinitely generated game while avoiding wormholes, exploding stars, asteroids, and pick up cool power-ups along the way. V(1.0.0) coming soon or maybe never.</p>
-                    <a href="YOUR_VOYAGE_GX_LINK_HERE" target="_blank" class="launch-btn">OPEN GX GAMES</a>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">You're a Astronaut lost in the cosmos, given a job to redirect missiles towards the threatening blackhole TON-618. humanity's fate rest in your hands. Will you overcome the hurdles of asteroids and planets. Or succumb to death? Fly through this infinitely generated game while avoiding wormholes, exploding stars, asteroids, and pick up cool power-ups along the way. V(1.0.0) coming soon or maybe never.</p>
+                    <a href="https://gx.me/Coz3erz/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
                 <div class="project-visual" id="media-voyage"></div>
             </div>
@@ -361,32 +348,64 @@
         </div>
     </section>
 
-    <!-- Section 4: Global Uplink Footer Deck -->
+    <!-- Section 3: Studio Logs (Stacked below projects) -->
+    <section class="screen-pane">
+        <div class="slide-trigger" style="width: 100%;">
+            <h2 class="pixel-headline">[STUDIO_LOGS]</h2>
+            
+            <div class="studio-container">
+                <div class="asymmetric-panel">
+                    <h3 class="game-title" style="font-size: 1.1rem;">CODETH studios</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">Founded on the 1st of June of 2024. CODETH studios is a hub of people who are talented in many art forms, we have 3 musicians, 2 artists, one writer, one 3d modeller, 3 programmers.</p>
+                    <p style="font-size: 1.1rem; color: rgba(255,255,255,0.15);">// many of the people in CODETH studios are inactive and they have a life. So it doesn't have many major games under development, yet.</p>
+                </div>
+                
+                <div class="asymmetric-panel">
+                    <h3 class="game-title" style="font-size: 1.1rem;">Team Masterpiece</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">Founded and assembled during july-august of 2024.</p>
+                    <p style="color: var(--text-muted);">Team Masterpiece is the hub of the creative minds behind the upcoming game Masterpiece. This team consists of: Coz3erz (head of programming, handles art and animation, handles music composition)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Clean Contact Footer Platform -->
     <footer class="footer-pane slide-trigger">
-        <h2 class="pixel-headline" style="font-size: 1.5rem; margin-bottom: 10px;">[UPLINK]</h2>
-        <p style="color: var(--text-muted);">Content updates hosted on YouTube. Contact accessible via Discord handles.</p>
+        <h2 class="pixel-headline" style="font-size: 1.5rem; margin-bottom: 10px;">CONTACT</h2>
+        <p style="color: var(--text-bright);">contact me through coz3erzsupport@gmail.com</p>
+        
+        <span class="tiny-grey-text">check out coz3erz on YouTube for devlogs, soundtracks, and game system updates.</span>
         
         <div class="footer-links-container">
             <a href="YOUR_YOUTUBE_CHANNEL_LINK_HERE" target="_blank" class="launch-btn">YOUTUBE</a>
             <a href="YOUR_GLOBAL_ITCH_PROFILE_LINK_HERE" target="_blank" class="launch-btn">ITCH.IO</a>
-            <a href="YOUR_GLOBAL_GX_PROFILE_LINK_HERE" target="_blank" class="launch-btn">GX.GAMES</a>
+            <a href="https://gx.me/Coz3erz/" target="_blank" class="launch-btn">GX.GAMES</a>
         </div>
         <p style="font-family: 'Press Start 2P'; font-size: 0.6rem; color: rgba(255,255,255,0.15); margin-top: 50px; letter-spacing: 1px;">COZ3ERZ // PORTFOLIO COMPLETE</p>
     </footer>
 
-    <!-- Native Configuration & Rendering Logic -->
     <script>
-        // =================================================================
-        // GLOBAL MEDIA VARIABLE DECK (EDIT YOUR LINKS AND VIDEO FILES HERE)
-        // =================================================================
+        // =================================================================================
+        //  ███████████████████████████████████████████████████████████████████████████████
+        //  !!! LOOK HERE !!! THIS IS THE GLOBAL MEDIA VARIABLE DECK YOU ARE LOOKING FOR
+        //  ███████████████████████████████████████████████████████████████████████████████
+        //  
+        //  Replace the image names inside the quotes below with your copied URL addresses.
+        //  If you drop a link ending in a video file format (like .mp4), it plays a video loop!
+        // =================================================================================
+        
         const GLOBAL_MEDIA_ASSETS = {
-            speedblitz: "1000308739.jpg",      // To use a video loop, just drop your video filename here
-            masterpiece: "1000308738.jpg",     // e.g., "masterpiece_gameplay.mp4"
+            speedblitz: "1000308739.jpg",      
+            masterpiece: "1000308738.jpg",     
             sonic: "1000308737.jpg",
-            flappy: "1000308735.jpg",
+            flappy: "https://play.gx.games/game/6d16d9a1-5aa2-4d90-8a7d-8e311a5018ba/graphic/8f0f4d23-8516-4663-b5a5-6ec1000061b1/webp-1280?6da3d402fc9896633752c35615c690de",
             baldi: "1000308736.jpg",
             voyage: "1000308734.jpg"
         };
+
+        // =================================================================================
+        //  (End of asset links deck. Do not modify the processing engine code below!)
+        // =================================================================================
 
         // Automatic Video/Image Injection Engine
         Object.keys(GLOBAL_MEDIA_ASSETS).forEach(key => {
@@ -421,7 +440,7 @@
         };
 
         window.addEventListener('scroll', scrollCheck);
-        scrollCheck(); // Fire on page loading loop
+        scrollCheck(); 
     </script>
 </body>
 </html>
