@@ -3,106 +3,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COZ3ERZ // PORTFOLIO</title>
-    <!-- Pixel Fonts -->
+    <title>COZ3ERZ // OPERATOR_INTERFACE</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0f0c29;
-            --accent-purple: #302b63;
-            --accent-blue: #24243e;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text-main: #e0e0e0;
-            --text-accent: #ff00ff;
+            --void-black: #030305;
+            --aura-purple: rgba(33, 20, 80, 0.4);
+            --aura-blue: rgba(10, 25, 70, 0.35);
+            --neon-glow: #00f0ff;
+            --text-bright: #ffffff;
+            --text-muted: #626d7f;
+            --panel-border: rgba(255, 255, 255, 0.04);
         }
 
-        /* Lofi Cloud Background Animation */
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
-            background: linear-gradient(135deg, var(--bg-dark), var(--accent-purple), var(--accent-blue));
-            background-size: 400% 400%;
-            animation: gradientMove 15s ease infinite;
-            color: var(--text-main);
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--void-black);
+            color: var(--text-bright);
             font-family: 'VT323', monospace;
+            font-size: 1.4rem;
             overflow-x: hidden;
+            position: relative;
         }
 
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Non-uniform Ambient Glow Vibe (No literal lens flares) */
+        .ambient-universe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at 10% 20%, var(--aura-purple) 0%, transparent 50%),
+                        radial-gradient(circle at 90% 80%, var(--aura-blue) 0%, transparent 60%);
+            filter: blur(100px);
+            animation: auraShift 20s ease-infinite alternate;
         }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 40px; }
+        @keyframes auraShift {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.2) rotate(15deg); }
+        }
 
-        h1, h2 { font-family: 'Press Start 2P', cursive; color: #fff; margin-bottom: 30px; }
-        
-        /* NotebookLM-style Cards */
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            margin-bottom: 40px;
-            border-left: 4px solid var(--text-accent);
+        .scanline {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 6px 100%;
+            z-index: 999;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        /* Immersive Full-Screen Sections */
+        .screen-pane {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 10%;
+            position: relative;
+            border-bottom: 1px solid var(--panel-border);
+        }
+
+        /* Dynamic Scroll Effects: Slide in and completely pull out when away */
+        .slide-trigger {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(80px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .card.visible { opacity: 1; transform: translateY(0); }
+        .slide-trigger.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
 
-        .game-thumb { width: 100%; height: 200px; background: #000; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #555; }
+        /* Asymmetric Layout Formatting */
+        .hero-left { max-width: 650px; }
+        .align-right { align-self: flex-end; text-align: right; }
+        
+        .pixel-headline {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
 
-        .btn { display: inline-block; padding: 10px 20px; border: 1px solid var(--text-accent); color: var(--text-accent); text-decoration: none; font-family: 'Press Start 2P', cursive; font-size: 0.6rem; margin-top: 10px; }
-        .btn:hover { background: var(--text-accent); color: #fff; }
+        .manifesto-list {
+            list-style: none;
+            font-size: 1.8rem;
+            color: var(--text-muted);
+        }
+
+        .manifesto-list li {
+            margin-bottom: 12px;
+            transition: color 0.3s;
+        }
+        .manifesto-list li:hover { color: var(--text-bright); }
+
+        /* Studio Architecture */
+        .studio-container {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .asymmetric-panel {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--panel-border);
+            padding: 40px;
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .asymmetric-panel::before {
+            content: '//';
+            position: absolute;
+            top: 15px; right: 20px;
+            color: var(--text-muted);
+            font-family: 'Press Start 2P';
+            font-size: 0.7rem;
+        }
+
+        /* Anti-Google-Doc Project Display */
+        .project-row {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 120px;
+            flex-wrap: wrap;
+        }
+
+        .project-row.reverse { flex-direction: row-reverse; text-align: right; }
+
+        .project-info { flex: 1; min-width: 320px; }
+        
+        .project-visual {
+            flex: 1;
+            min-width: 320px;
+            height: 240px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--panel-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .project-visual:hover img { opacity: 1; }
+
+        .game-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .game-meta {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .launch-terminal-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 25px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Press Start 2P';
+            font-size: 0.65rem;
+            transition: all 0.2s;
+        }
+
+        .launch-terminal-btn:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .pixel-headline { font-size: 1.6rem; }
+            .screen-pane { padding: 40px 6%; }
+            .project-row, .project-row.reverse { text-align: left; flex-direction: column; gap: 25px; }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1 style="text-align: center; font-size: 2rem;">Hi, I'm Coz3erz.</h1>
-    
-    <div class="card">
-        <p>Indie game developer, Artist and animator, Horrible music composer, Decent Mechatronics engineer, Professional idiot.</p>
-    </div>
+    <div class="ambient-universe"></div>
+    <div class="scanline"></div>
 
-    <h2>Studios</h2>
-    <div class="card">
-        <h3>CODETH Studios</h3>
-        <p>Founded June 1, 2024. A hub of talented art forms: 3 musicians, 2 artists, 1 writer, 1 modeler, 3 programmers.</p>
-    </div>
-    <div class="card">
-        <h3>Team Masterpiece</h3>
-        <p>Assembled July-August 2024. The creative minds behind project Masterpiece.</p>
-    </div>
+    <!-- Section 1: Hero Setup (Sourced from Old Profile Layout Text) -->
+    <section class="screen-pane">
+        <div class="hero-left slide-trigger">
+            <h1 class="pixel-headline">HI, I'M COZ3ERZ.</h1>
+            <ul class="manifesto-list">
+                <li>_ INDIE GAME DEVELOPER</li>
+                <li>_ ARTIST AND ANIMATOR</li>
+                <li>_ HORRIBLE MUSIC COMPOSER</li>
+                <li>_ DECENT MECHATRONICS ENGINEER</li>
+                <li>_ PROFESSIONAL IDIOT</li>
+            </ul>
+        </div>
+    </section>
 
-    <h2>Projects</h2>
-    
-    <!-- Game Card Example -->
-    <div class="card">
-        <div class="game-thumb">IMAGE_PLACEHOLDER_SPEEDBLITZ</div>
-        <h3>SpeedBlitz (Beta)</h3>
-        <p>A very unfinished rogue-like. High energy, chiptune-heavy.</p>
-        <a href="#" class="btn">PLAY NOW</a>
-    </div>
+    <!-- Section 2: Studio Breakdown (Sourced from Old About-Me Layout Text) -->
+    <section class="screen-pane">
+        <div class="slide-trigger" style="width: 100%;">
+            <h2 class="pixel-headline" style="font-size: 1.8rem;">[COLLECTIVE_INFRASTRUCTURE]</h2>
+            <p style="color: var(--text-muted); max-width: 700px; margin-bottom: 30px;">About CODETH studios and Team Masterpiece. What are these studios and their purposes?</p>
+            
+            <div class="studio-container">
+                <div class="asymmetric-panel">
+                    <h3 class="game-title" style="font-size: 1.1rem;">CODETH studios</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">Founded on the 1st of June of 2024. CODETH studios is a hub of people who are talented in many art forms, we have 3 musicians, 2 artists, one writer, one 3d modeller, 3 programmers.</p>
+                    <p style="font-size: 1.1rem; color: rgba(255,255,255,0.2);">// many of the people in CODETH studios are inactive and they have a life. So it doesn't have many major games under development, yet.</p>
+                </div>
+                <div class="asymmetric-panel">
+                    <h3 class="game-title" style="font-size: 1.1rem;">Team Masterpiece</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">Founded and assembled during july-august of 2024.</p>
+                    <p style="color: var(--text-muted);">Team Masterpiece is the hub of the creative minds behind the upcoming game Masterpiece. This team consists of: Coz3erz (head of programming, handles art and animation, handles music composition)</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="card">
-        <div class="game-thumb">IMAGE_PLACEHOLDER_VOYAGE</div>
-        <h3>Voyage</h3>
-        <p>Redirect missiles towards TON-618. Infinitely generated space mission.</p>
-        <a href="#" class="btn">PLAY NOW</a>
-    </div>
-</div>
+    <!-- Section 3: Asymmetric Project Stream (Sourced from Old Project Grid Descriptions) -->
+    <section class="screen-pane">
+        <div style="width: 100%;">
+            <h2 class="pixel-headline" style="font-size: 1.8rem; margin-bottom: 80px;">[SOFTWARE_DEPLOYMENTS]</h2>
 
-<script>
-    // Scroll Animation Logic
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    });
-    document.querySelectorAll('.card').forEach(c => observer.observe(c));
-</script>
+            <!-- Project 1: SpeedBlitz -->
+            <div class="project-row slide-trigger">
+                <div class="project-info">
+                    <div class="game-meta">Godot // Rogue-like</div>
+                    <h3 class="game-title">SpeedBlitz (Beta)</h3>
+                    <p style="color: var(--text-muted);">A very unfinished rogue-like build utilizing custom collision layers and high-intensity sound loops.</p>
+                    <a href="https://coz3erz.itch.io/" target="_blank" class="launch-terminal-btn">EXECUTE_RUN</a>
+                </div>
+                <div class="project-visual">
+                    <!-- PASTE DIRECT IMAGE LINK IN SRC ACCORDING TO TUTORIAL -->
+                    <img src="" alt="SpeedBlitz Asset Capture">
+                </div>
+            </div>
 
+            <!-- Project 2: Masterpiece Prototype -->
+            <div class="project-row reverse slide-trigger">
+                <div class="project-info">
+                    <div class="game-meta">Godot // Platformer Framework</div>
+                    <h3 class="game-title">Masterpiece Prototype</h3>
+                    <p style="color: var(--text-muted);">A basic platformer exploration. Testing gravity interpolation variables, boundary checks, and tile rendering speeds.</p>
+                    <a href="https://coz3erz.itch.io/" target="_blank" class="launch-terminal-btn">EXECUTE_RUN</a>
+                </div>
+                <div class="project-visual">
+                    <img src="" alt="Masterpiece Asset Capture">
+                </div>
+            </div>
+
+            <!-- Project 3: Sonic Coz -->
+            <div class="project-row slide-trigger">
+                <div class="project-info">
+                    <div class="game-meta">GX Games // Vector Sandbox</div>
+                    <h3 class="game-title">Sonic coz</h3>
+                    <p style="color: var(--text-muted);">Run through this surprisingly fun map while getting chased by, space alien things? Oh yeah and you can shoot lasers and there's these space trampolines. no new versions coming soon.</p>
+                    <a href="https://gx.games/" target="_blank" class="launch-terminal-btn">EXECUTE_RUN</a>
+                </div>
+                <div class="project-visual">
+                    <img src="" alt="Sonic Coz Asset Capture">
+                </div>
+            </div>
+
+            <!-- Project 4: Flappy Crewmate -->
+            <div class="project-row reverse slide-trigger">
+                <div class="project-info">
+                    <div class="game-meta">State Loop // Arcade</div>
+                    <h3 class="game-title">flappy crewmate!</h3>
+                    <p style="color: var(--text-muted);">You're another Astronaut lost in the cosmos, this time, equipped with a jetpack. And for some reason there's these random pipes in space. Flap through this infinitely generated expanse of pipes. V(1.0.0), no new versions releasing soon.</p>
+                    <a href="https://gx.games/" target="_blank" class="launch-terminal-btn">EXECUTE_RUN</a>
+                </div>
+                <div class="project-visual">
+                    <img src="" alt="Flappy Crewmate Asset Capture">
+                </div>
+            </div>
+
+            <!-- Project 5: Baldi's Basics Scuffed -->
+            <div class="project-row slide-trigger">
+                <div class="project-info">
+                    <div class="game-meta">Raycasting // Pathfinding</div>
+                    <h3 class="game-title">Baldi's basics: SCUFFED EDITION</h3>
+                    <p style="color: var(--text-muted);">You sneak into the school at night at night. Baldi is furious. Principle is sleepy and can't see but can still hear you running. Do you have the guts to get your friends 10 notebooks and get out of there? Super unfinished and crashes btw lol. Utilising raycasters with real-time pathfinding.</p>
+                    <a href="https://gx.games/" target="_blank" class="launch-terminal-btn">EXECUTE_RUN</a>
+                </div>
+                <div class="project-visual">
+                    <img src="" alt="Baldi Asset Capture">
+                </div>
+            </div>
+
+            <!-- Project 6: Voyage -->
+            <div class="project-row reverse slide-trigger">
+                <div class="project-info">
+                    <div class="game-meta">GX Games // Infinite Generative</div>
+                    <h3 class="game-title">Voyage</h3>
+                    <p style="color: var(--text-muted);">You're a Astronaut lost in the cosmos, given a job to redirect missiles towards the threatening blackhole TON-618. humanity's fate rest in your hands. Will you overcome the hurdles of asteroids and planets. Or succumb to death? Fly through this infinitely generated game while avoiding wormholes, exploding stars, asteroids, and pick up cool power-ups along the way. V(1.0.0) coming soon or maybe never.</p>
+                    <a href="https://gx.games/" target="_blank" class="launch-terminal-btn">EXECUTE_RUN</a>
+                </div>
+                <div class="project-visual">
+                    <img src="" alt="Voyage Asset Capture">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 4: Contact Uplink -->
+    <section class="screen-pane align-right slide-trigger">
+        <h2 class="pixel-headline" style="font-size: 1.5rem;">[COMMS_LINK]</h2>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">Wanna see more content by me? Check out @Coz3erz on Youtube.</p>
+        <p style="color: var(--text-muted); margin-bottom: 40px;">Wanna Contact me? Contact @Coz3erz on discord.</p>
+        <div>
+            <a href="https://www.youtube.com/channel/UCgrVSt3DLEbO8CEUZxcZgUg" target="_blank" class="launch-terminal-btn">YOUTUBE</a>
+        </div>
+    </section>
+
+    <!-- Bi-directional Scroll Observer Logic -->
+    <script>
+        const animatedElements = document.querySelectorAll('.slide-trigger');
+
+        const scrollCheck = () => {
+            animatedElements.forEach((el) => {
+                const elementTop = el.getBoundingClientRect().top;
+                const elementBottom = el.getBoundingClientRect().bottom;
+                
+                // Slides in when crossing the bottom viewport border
+                if (elementTop <= (window.innerHeight || document.documentElement.clientHeight) * 0.85) {
+                    el.classList.add('active');
+                }
+                // Pulls completely out if scrolled completely past the screen top or bottom
+                if (elementBottom < 0 || elementTop > (window.innerHeight || document.documentElement.clientHeight)) {
+                    el.classList.remove('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', scrollCheck);
+        scrollCheck(); // Initial execution check
+    </script>
 </body>
 </html>
