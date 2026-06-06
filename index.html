@@ -68,7 +68,7 @@
             justify-content: center;
             padding: 0 10%;
             position: relative;
-            /* Long structural distance between Section A and Title B */
+            /* Long structural distance between the end of a section and the next title */
             margin-top: 130px; 
         }
 
@@ -82,6 +82,7 @@
             position: relative;
             max-width: 800px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .manifesto-container {
@@ -90,14 +91,16 @@
             margin-top: 15px;
         }
 
-        /* Larger structural distance between Title B and Section B content */
+        /* Centered Headings + Expanded Section Distance */
         .pixel-headline {
             font-family: 'Press Start 2P', cursive;
             font-size: 2.2rem;
             line-height: 1.2;
-            margin-bottom: 55px; 
+            margin-bottom: 65px; /* Larger space between heading and content elements */
             letter-spacing: -1px;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            text-align: center; /* Forces absolute centering on all page headings */
+            width: 100%;
         }
 
         .manifesto-list {
@@ -129,6 +132,7 @@
             display: flex;
             gap: 65px; 
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .asymmetric-panel {
@@ -156,6 +160,7 @@
             gap: 65px; 
             margin-bottom: 65px; 
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .project-row.reverse { flex-direction: row-reverse; text-align: right; }
@@ -246,6 +251,7 @@
     <div class="glow-backdrop"></div>
     <div class="scanline"></div>
 
+    <!-- Section 1: Centered Header Presentation -->
     <section class="screen-pane">
         <header class="slide-trigger">
             <h1 class="pixel-headline">HI, I'M COZ3ERZ.</h1>
@@ -261,6 +267,7 @@
         </header>
     </section>
 
+    <!-- Section 2: Studio Specifications -->
     <section class="screen-pane">
         <div class="slide-trigger" style="width: 100%;">
             <h2 class="pixel-headline">[STUDIO_LOGS]</h2>
@@ -280,66 +287,73 @@
         </div>
     </section>
 
+    <!-- Section 3: Asymmetric Project Stream -->
     <section class="screen-pane">
         <div style="width: 100%;">
             <h2 class="pixel-headline">[PROJECTS]</h2>
 
+            <!-- Project 1: SpeedBlitz -->
             <div class="project-row slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">Godot // Rogue-like</div>
                     <h3 class="game-title">SpeedBlitz (Beta)</h3>
                     <p style="color: var(--text-muted);">A very unfinished rogue-like build utilizing custom collision layers and high-intensity sound loops.</p>
-                    <a href="https://coz3erz.itch.io/" target="_blank" class="launch-btn">OPEN ITCH.IO</a>
+                    <a href="YOUR_SPEEDBLITZ_ITCH_LINK_HERE" target="_blank" class="launch-btn">OPEN ITCH.IO</a>
                 </div>
                 <div class="project-visual" id="media-speedblitz"></div>
             </div>
 
+            <!-- Project 2: Masterpiece Prototype -->
             <div class="project-row reverse slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">Godot // Platformer Framework</div>
                     <h3 class="game-title">Masterpiece Prototype</h3>
                     <p style="color: var(--text-muted);">A basic platformer exploration. Testing gravity interpolation variables, boundary checks, and tile rendering speeds.</p>
-                    <a href="https://coz3erz.itch.io/" target="_blank" class="launch-btn">OPEN ITCH.IO</a>
+                    <a href="YOUR_MASTERPIECE_ITCH_LINK_HERE" target="_blank" class="launch-btn">OPEN ITCH.IO</a>
                 </div>
                 <div class="project-visual" id="media-masterpiece"></div>
             </div>
 
+            <!-- Project 3: Sonic Coz -->
             <div class="project-row slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">GX Games // Vector Sandbox</div>
                     <h3 class="game-title">Sonic coz</h3>
                     <p style="color: var(--text-muted);">Run through this surprisingly fun map while getting chased by, space alien things? Oh yeah and you can shoot lasers and there's these space trampolines. no new versions coming soon.</p>
-                    <a href="https://gx.games/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
+                    <a href="YOUR_SONIC_COZ_GX_LINK_HERE" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
                 <div class="project-visual" id="media-sonic"></div>
             </div>
 
+            <!-- Project 4: Flappy Crewmate -->
             <div class="project-row reverse slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">State Loop // Arcade</div>
                     <h3 class="game-title">flappy crewmate!</h3>
                     <p style="color: var(--text-muted);">You're another Astronaut lost in the cosmos, this time, equipped with a jetpack. And for some reason there's these random pipes in space. Flap through this infinitely generated expanse of pipes. V(1.0.0), no new versions releasing soon.</p>
-                    <a href="https://gx.games/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
+                    <a href="YOUR_FLAPPY_CREWMATE_GX_LINK_HERE" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
                 <div class="project-visual" id="media-flappy"></div>
             </div>
 
+            <!-- Project 5: Baldi's Basics Scuffed -->
             <div class="project-row slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">Raycasting // Pathfinding</div>
                     <h3 class="game-title">Baldi's basics: SCUFFED EDITION</h3>
                     <p style="color: var(--text-muted);">You sneak into the school at night at night. Baldi is furious. Principle is sleepy and can't see but can still hear you running. Do you have the guts to get your friends 10 notebooks and get out of there? Super unfinished and crashes btw lol. Utilising raycasters with real-time pathfinding.</p>
-                    <a href="https://gx.games/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
+                    <a href="YOUR_BALDI_SCUFFED_GX_LINK_HERE" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
                 <div class="project-visual" id="media-baldi"></div>
             </div>
 
+            <!-- Project 6: Voyage -->
             <div class="project-row reverse slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">GX Games // Infinite Generative</div>
                     <h3 class="game-title">Voyage</h3>
                     <p style="color: var(--text-muted);">You're a Astronaut lost in the cosmos, given a job to redirect missiles towards the threatening blackhole TON-618. humanity's fate rest in your hands. Will you overcome the hurdles of asteroids and planets. Or succumb to death? Fly through this infinitely generated game while avoiding wormholes, exploding stars, asteroids, and pick up cool power-ups along the way. V(1.0.0) coming soon or maybe never.</p>
-                    <a href="https://gx.games/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
+                    <a href="YOUR_VOYAGE_GX_LINK_HERE" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
                 <div class="project-visual" id="media-voyage"></div>
             </div>
@@ -347,32 +361,34 @@
         </div>
     </section>
 
+    <!-- Section 4: Global Uplink Footer Deck -->
     <footer class="footer-pane slide-trigger">
         <h2 class="pixel-headline" style="font-size: 1.5rem; margin-bottom: 10px;">[UPLINK]</h2>
         <p style="color: var(--text-muted);">Content updates hosted on YouTube. Contact accessible via Discord handles.</p>
         
         <div class="footer-links-container">
-            <a href="https://www.youtube.com/channel/UCgrVSt3DLEbO8CEUZxcZgUg" target="_blank" class="launch-btn">YOUTUBE</a>
-            <a href="https://coz3erz.itch.io/" target="_blank" class="launch-btn">ITCH.IO</a>
-            <a href="https://gx.games/" target="_blank" class="launch-btn">GX.GAMES</a>
+            <a href="YOUR_YOUTUBE_CHANNEL_LINK_HERE" target="_blank" class="launch-btn">YOUTUBE</a>
+            <a href="YOUR_GLOBAL_ITCH_PROFILE_LINK_HERE" target="_blank" class="launch-btn">ITCH.IO</a>
+            <a href="YOUR_GLOBAL_GX_PROFILE_LINK_HERE" target="_blank" class="launch-btn">GX.GAMES</a>
         </div>
         <p style="font-family: 'Press Start 2P'; font-size: 0.6rem; color: rgba(255,255,255,0.15); margin-top: 50px; letter-spacing: 1px;">COZ3ERZ // PORTFOLIO COMPLETE</p>
     </footer>
 
+    <!-- Native Configuration & Rendering Logic -->
     <script>
         // =================================================================
         // GLOBAL MEDIA VARIABLE DECK (EDIT YOUR LINKS AND VIDEO FILES HERE)
         // =================================================================
         const GLOBAL_MEDIA_ASSETS = {
-            speedblitz: "1000308739.jpg",      // Acceptable files: .mp4, .webm, .jpg, .png
-            masterpiece: "1000308738.jpg",     // Just paste the file name or complete link
+            speedblitz: "1000308739.jpg",      // To use a video loop, just drop your video filename here
+            masterpiece: "1000308738.jpg",     // e.g., "masterpiece_gameplay.mp4"
             sonic: "1000308737.jpg",
             flappy: "1000308735.jpg",
             baldi: "1000308736.jpg",
             voyage: "1000308734.jpg"
         };
 
-        // Automatic Video Injection Engine
+        // Automatic Video/Image Injection Engine
         Object.keys(GLOBAL_MEDIA_ASSETS).forEach(key => {
             const container = document.getElementById(`media-${key}`);
             if (!container) return;
