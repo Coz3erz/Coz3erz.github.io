@@ -168,27 +168,49 @@
 
         .project-info { flex: 1; min-width: 320px; }
         
+        /* HOVER FADE CONTAINER STYLING */
         .project-visual {
             flex: 1;
             min-width: 320px;
             height: 220px;
             background: rgba(0, 0, 0, 0.6);
             border: 1px solid var(--panel-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: relative;
             overflow: hidden;
         }
 
-        .project-visual img, .project-visual video {
+        /* Target image/video children inside visual player modules */
+        .project-visual .media-default,
+        .project-visual .media-hover {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.7;
-            transition: opacity 0.3s;
+            transition: opacity 0.4s ease-in-out;
         }
-        .project-visual:hover img, .project-visual:hover video { opacity: 1; }
+
+        /* Default visible state configuration */
+        .project-visual .media-default {
+            opacity: 0.75;
+            z-index: 2;
+        }
+
+        /* Default hidden hover state configuration */
+        .project-visual .media-hover {
+            opacity: 0;
+            z-index: 3;
+        }
+
+        /* Active Fade Logic triggered by row hover states */
+        .project-row:hover .media-hover {
+            opacity: 1;
+        }
+        
+        .project-row:hover .media-default {
+            opacity: 0;
+        }
 
         .game-title {
             font-family: 'Press Start 2P', cursive;
@@ -285,7 +307,7 @@
                     <div class="game-meta">Godot // Rogue-like</div>
                     <h3 class="game-title">SpeedBlitz (Beta)</h3>
                     <p style="color: var(--text-muted); margin-bottom: 15px;">A very unfinished rogue-like build utilizing custom collision layers and high-intensity sound loops.</p>
-                    <a href="YOUR_SPEEDBLITZ_ITCH_LINK_HERE" target="_blank" class="launch-btn">OPEN ITCH.IO</a>
+                    <a href="https://coz3erz-1000.itch.io/speedblitz-beta" target="_blank" class="launch-btn">OPEN ITCH.IO</a>
                 </div>
                 <div class="project-visual" id="media-speedblitz"></div>
             </div>
@@ -296,7 +318,7 @@
                     <div class="game-meta">Godot // Platformer Framework</div>
                     <h3 class="game-title">Masterpiece Prototype</h3>
                     <p style="color: var(--text-muted); margin-bottom: 15px;">A basic platformer exploration. Testing gravity interpolation variables, boundary checks, and tile rendering speeds.</p>
-                    <a href="YOUR_MASTERPIECE_ITCH_LINK_HERE" target="_blank" class="launch-btn">OPEN ITCH.IO</a>
+                    <a href="https://coz3erz-1000.itch.io/masterpiece-prototype" target="_blank" class="launch-btn">OPEN ITCH.IO</a>
                 </div>
                 <div class="project-visual" id="media-masterpiece"></div>
             </div>
@@ -307,7 +329,7 @@
                     <div class="game-meta">GX Games // Vector Sandbox</div>
                     <h3 class="game-title">Sonic coz</h3>
                     <p style="color: var(--text-muted); margin-bottom: 15px;">Run through this surprisingly fun map while getting chased by, space alien things? Oh yeah and you can shoot lasers and there's these space trampolines. no new versions coming soon.</p>
-                    <a href="https://gx.me/Coz3erz/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
+                    <a href="https://gx.games/games/q7ul7k/sonic-coz/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
                 <div class="project-visual" id="media-sonic"></div>
             </div>
@@ -318,7 +340,7 @@
                     <div class="game-meta">State Loop // Arcade</div>
                     <h3 class="game-title">flappy crewmate!</h3>
                     <p style="color: var(--text-muted); margin-bottom: 15px;">You're another Astronaut lost in the cosmos, this time, equipped with a jetpack. And for some reason there's these random pipes in space. Flap through this infinitely generated expanse of pipes. V(1.0.0), no new versions releasing soon.</p>
-                    <a href="https://gx.me/Coz3erz/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
+                    <a href="https://gx.games/games/9sgrn2/flappy-crewmate-/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
                 <div class="project-visual" id="media-flappy"></div>
             </div>
@@ -329,7 +351,7 @@
                     <div class="game-meta">Raycasting // Pathfinding</div>
                     <h3 class="game-title">Baldi's basics: SCUFFED EDITION</h3>
                     <p style="color: var(--text-muted); margin-bottom: 15px;">You sneak into the school at night at night. Baldi is furious. Principle is sleepy and can't see but can still hear you running. Do you have the guts to get your friends 10 notebooks and get out of there? Super unfinished and crashes btw lol. Utilising raycasters with real-time pathfinding.</p>
-                    <a href="https://gx.me/Coz3erz/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
+                    <a href="https://gx.games/games/w7rseo/baldi-s-basics-in-education-and-learning/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
                 <div class="project-visual" id="media-baldi"></div>
             </div>
@@ -340,7 +362,7 @@
                     <div class="game-meta">GX Games // Infinite Generative</div>
                     <h3 class="game-title">Voyage</h3>
                     <p style="color: var(--text-muted); margin-bottom: 15px;">You're a Astronaut lost in the cosmos, given a job to redirect missiles towards the threatening blackhole TON-618. humanity's fate rest in your hands. Will you overcome the hurdles of asteroids and planets. Or succumb to death? Fly through this infinitely generated game while avoiding wormholes, exploding stars, asteroids, and pick up cool power-ups along the way. V(1.0.0) coming soon or maybe never.</p>
-                    <a href="https://gx.me/Coz3erz/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
+                    <a href="https://gx.games/games/xdce1o/voyage/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
                 <div class="project-visual" id="media-voyage"></div>
             </div>
@@ -377,8 +399,8 @@
         <span class="tiny-grey-text">check out coz3erz on YouTube for devlogs, soundtracks, and game system updates.</span>
         
         <div class="footer-links-container">
-            <a href="YOUR_YOUTUBE_CHANNEL_LINK_HERE" target="_blank" class="launch-btn">YOUTUBE</a>
-            <a href="YOUR_GLOBAL_ITCH_PROFILE_LINK_HERE" target="_blank" class="launch-btn">ITCH.IO</a>
+            <a href="https://YouTube.com/@Coz3erz" target="_blank" class="launch-btn">YOUTUBE</a>
+            <a href="https://coz3erz-1000.itch.io/" target="_blank" class="launch-btn">ITCH.IO</a>
             <a href="https://gx.me/Coz3erz/" target="_blank" class="launch-btn">GX.GAMES</a>
         </div>
         <p style="font-family: 'Press Start 2P'; font-size: 0.6rem; color: rgba(255,255,255,0.15); margin-top: 50px; letter-spacing: 1px;">COZ3ERZ // PORTFOLIO COMPLETE</p>
@@ -387,39 +409,72 @@
     <script>
         // =================================================================================
         //  ███████████████████████████████████████████████████████████████████████████████
-        //  !!! LOOK HERE !!! THIS IS THE GLOBAL MEDIA VARIABLE DECK YOU ARE LOOKING FOR
+        //  !!! ASSET MATRIX DESIGN DECK !!! CONFIGURE YOUR IMAGE / VIDEO URL ADDRESSES HERE
         //  ███████████████████████████████████████████████████████████████████████████████
         //  
-        //  Replace the image names inside the quotes below with your copied URL addresses.
-        //  If you drop a link ending in a video file format (like .mp4), it plays a video loop!
+        //  All local file mappings have been hardcoded from your repository blueprints.
+        //  To use a stream link instead later, simply replace the filename string with your URL.
         // =================================================================================
         
         const GLOBAL_MEDIA_ASSETS = {
-            speedblitz: "1000308739.jpg",      
-            masterpiece: "1000308738.jpg",     
-            sonic: "1000308737.jpg",
-            flappy: "https://play.gx.games/game/6d16d9a1-5aa2-4d90-8a7d-8e311a5018ba/graphic/8f0f4d23-8516-4663-b5a5-6ec1000061b1/webp-1280?6da3d402fc9896633752c35615c690de",
-            baldi: "1000308736.jpg",
-            voyage: "1000308734.jpg"
+            speedblitz: {
+                default: "sb.png",      
+                hover: "sb_gp.png"
+            },      
+            masterpiece: {
+                default: "mp.jpg",     
+                hover: "mp_gp.png"
+            },     
+            sonic: {
+                default: "sc.jpg",
+                hover: "sc_gp.jpg"
+            },
+            flappy: {
+                default: "flappy_crewmate.jpg",
+                hover: "flappy_crewmate_gp.webp"
+            },
+            baldi: {
+                default: "bb.jpg",
+                hover: "bb_gp.jpg"
+            },
+            voyage: {
+                default: "voyage.jpg",
+                hover: "voyage_gp.jpg"
+            }
         };
 
         // =================================================================================
-        //  (End of asset links deck. Do not modify the processing engine code below!)
+        //  (End of configuration parameters. Processing operations run automatically below)
         // =================================================================================
 
-        // Automatic Video/Image Injection Engine
+        // Multi-Layer Media Crossfade Render Compiler
         Object.keys(GLOBAL_MEDIA_ASSETS).forEach(key => {
             const container = document.getElementById(`media-${key}`);
             if (!container) return;
             
-            const srcPath = GLOBAL_MEDIA_ASSETS[key].trim();
-            const isVideo = /\.(mp4|webm|ogg|mov|m4v)$/i.test(srcPath);
+            const defaultPath = GLOBAL_MEDIA_ASSETS[key].default.trim();
+            const hoverPath = GLOBAL_MEDIA_ASSETS[key].hover.trim();
+            
+            const defaultIsVideo = /\.(mp4|webm|ogg|mov|m4v)$/i.test(defaultPath);
+            const hoverIsVideo = /\.(mp4|webm|ogg|mov|m4v)$/i.test(hoverPath);
 
-            if (isVideo) {
-                container.innerHTML = `<video src="${srcPath}" autoplay loop muted playsinline></video>`;
+            let HTML_Buffer = "";
+
+            // Layer 1 compilation: Default State
+            if (defaultIsVideo) {
+                HTML_Buffer += `<video class="media-default" src="${defaultPath}" autoplay loop muted playsinline></video>`;
             } else {
-                container.innerHTML = `<img src="${srcPath}" alt="${key} showcase structural display">`;
+                HTML_Buffer += `<img class="media-default" src="${defaultPath}" alt="${key} baseline view">`;
             }
+
+            // Layer 2 compilation: Hover State
+            if (hoverIsVideo) {
+                HTML_Buffer += `<video class="media-hover" src="${hoverPath}" autoplay loop muted playsinline></video>`;
+            } else {
+                HTML_Buffer += `<img class="media-hover" src="${hoverPath}" alt="${key} active target view">`;
+            }
+
+            container.innerHTML = HTML_Buffer;
         });
 
         // Dynamic Viewport Visibility Observer Setup
@@ -431,7 +486,7 @@
                 const elementBottom = el.getBoundingClientRect().bottom;
                 
                 if (elementTop <= (window.innerHeight || document.documentElement.clientHeight) * 0.9) {
-                    el.classList.add('active');
+                   el.classList.add('active');
                 }
                 if (elementBottom < 0 || elementTop > (window.innerHeight || document.documentElement.clientHeight)) {
                     el.classList.remove('active');
