@@ -42,11 +42,11 @@
             z-index: -1;
             background: linear-gradient(
                 135deg, 
-                #000a02 0%, 
-                #0a0414 25%, 
-                #010b16 50%, 
-                #130410 75%, 
-                #000b02 100%
+                #000e02 0%, 
+                #0a0514 25%, 
+                #010c16 50%, 
+                #130510 75%, 
+                #000f02 100%
             );
             background-size: 400% 400%;
             animation: lavaLampShift 16s ease infinite alternate;
@@ -291,7 +291,21 @@
         @media (max-width: 768px) {
             .pixel-headline { font-size: 1.5rem; text-align: center; }
             .screen-pane { padding: 0 6%; margin-top: 80px; }
-            .project-row, .project-row.reverse { text-align: left; flex-direction: column; gap: 30px; margin-bottom: 45px; }
+            
+            /* Forces rows to stack cleanly downwards on mobile phone screens */
+            .project-row, .project-row.reverse { 
+                text-align: left; 
+                flex-direction: column; 
+                gap: 30px; 
+                margin-bottom: 45px; 
+            }
+            
+            /* FORCES THE RENDERING BOX TO STAY AT 220PX HIGH ON PHONES */
+            .project-visual {
+                width: 100%;
+                height: 220px;
+                flex: none;
+            }
         }
     </style>
 </head>
