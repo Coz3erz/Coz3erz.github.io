@@ -183,16 +183,15 @@
         .project-info { flex: 1; min-width: 320px; }
         
         /* HOVER FADE CONTAINER STYLING */
-/* Updated container forces a clean 16:9 widescreen layout */
         .project-visual {
             flex: 1;
             min-width: 320px;
-            aspect-ratio: 16 / 9; /* Replaces fixed height to scale beautifully on PC */
+            aspect-ratio: 16 / 9;
             background: #000000;
             border: 1px solid var(--panel-border);
             position: relative;
             overflow: hidden;
-            border-radius: 6px;
+            border-radius: 60px; /* Increased roundedness to 60px */
         }
 
         /* Target image/video children inside visual player modules */
@@ -203,14 +202,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Changed from cover to contain to prevent cropping */
             transition: opacity 0.4s ease-in-out;
-            border-radius: 6px;
+            border-radius: 60px; /* Sync rounding on elements */
         }
 
-        /* SPECIFIC EXCLUSIVE OVERRIDE FOR SPEEDBLITZ MAIN LOGO IMAGE */
-        #media-speedblitz .media-default {
+        /* Main static files pull back to preserve geometry scale */
+        .project-visual .media-default {
             object-fit: contain;
+        }
+
+        /* Hover states stretch entirely to fill the widescreen container frame */
+        .project-visual .media-hover {
+            object-fit: cover;
         }
 
         /* Default visible state configuration */
@@ -302,11 +305,10 @@
                 margin-bottom: 45px; 
             }
             
-            /* FORCES THE RENDERING BOX TO STAY AT 220PX HIGH ON PHONES */
-                .project-visual {
+            /* Responsive dynamic layout auto-scales on mobile screens */
+            .project-visual {
                 width: 100%;
                 flex: none;
-            }
             }
         }
     </style>
@@ -434,12 +436,6 @@
     </footer>
 
     <script>
-        // =================================================================================
-        //  ███████████████████████████████████████████████████████████████████████████████
-        //  !!! ASSET MATRIX DESIGN DECK !!! CONFIGURE YOUR IMAGE / VIDEO URL ADDRESSES HERE
-        //  ███████████████████████████████████████████████████████████████████████████████
-        // =================================================================================
-        
         const GLOBAL_MEDIA_ASSETS = {
             speedblitz: {
                 default: "https://coz3erz.github.io/sb.png",      
@@ -467,11 +463,6 @@
             }
         };
 
-
-        // =================================================================================
-        //  (End of configuration parameters. Processing operations run automatically below)
-        // =================================================================================
-
         // Multi-Layer Media Crossfade Render Compiler
         Object.keys(GLOBAL_MEDIA_ASSETS).forEach(key => {
             const container = document.getElementById(`media-${key}`);
@@ -485,14 +476,12 @@
 
             let HTML_Buffer = "";
 
-            // Layer 1 compilation: Default State
             if (defaultIsVideo) {
                 HTML_Buffer += `<video class="media-default" src="${defaultPath}" autoplay loop muted playsinline></video>`;
             } else {
                 HTML_Buffer += `<img class="media-default" src="${defaultPath}" alt="${key} baseline view">`;
             }
 
-            // Layer 2 compilation: Hover State
             if (hoverIsVideo) {
                 HTML_Buffer += `<video class="media-hover" src="${hoverPath}" autoplay loop muted playsinline></video>`;
             } else {
