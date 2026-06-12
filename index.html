@@ -183,15 +183,27 @@
         .project-info { flex: 1; min-width: 320px; }
         
         /* HOVER FADE CONTAINER STYLING */
-        .project-visual {
+        .project-visual-link {
             flex: 1;
             min-width: 320px;
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .project-visual {
+            width: 100%;
             aspect-ratio: 16 / 9;
             background: #000000;
             border: 1px solid var(--panel-border);
             position: relative;
             overflow: hidden;
-            border-radius: 60px; /* Increased roundedness to 60px */
+            border-radius: 60px;
+            transition: transform 0.2s ease;
+        }
+
+        .project-visual-link:hover .project-visual {
+            transform: scale(1.015);
         }
 
         /* Target image/video children inside visual player modules */
@@ -202,8 +214,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            transition: opacity 0.4s ease-in-out;
-            border-radius: 60px; /* Sync rounding on elements */
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+            border-radius: 60px;
         }
 
         /* Main static files pull back to preserve geometry scale */
@@ -216,6 +228,26 @@
             object-fit: cover;
         }
 
+        /* SPECIFIC EXCLUSIVE OVERRIDE FOR SPEEDBLITZ MAIN LOGO IMAGE */
+        #media-speedblitz .media-default {
+            object-fit: contain;
+        }
+
+        /* CUSTOM ZOOM MATRIX OVERRIDES */
+        /* Sonic Coz: Zoom in by 10% (scale 1.1) */
+        #media-sonic .media-default,
+        #media-sonic .media-hover {
+            transform: scale(1.10);
+        }
+
+        /* Baldi's Basics: Zoom in by 8% (scale 1.08) */
+        #media-baldi .media-default,
+        #media-baldi .media-hover {
+            transform: scale(1.08);
+        }
+        #media-voyage .media-default {
+            transform: scale(1.08);
+        }
         /* Default visible state configuration */
         .project-visual .media-default {
             opacity: 0.75;
@@ -306,9 +338,16 @@
             }
             
             /* Responsive dynamic layout auto-scales on mobile screens */
-            .project-visual {
+            .project-visual-link {
                 width: 100%;
                 flex: none;
+            }
+            .project-visual {
+                border-radius: 40px; /* Marginally scaled down rounding for small screens */
+            }
+            .project-visual .media-default,
+            .project-visual .media-hover {
+                border-radius: 40px;
             }
         }
     </style>
@@ -337,6 +376,7 @@
         <div style="width: 100%;">
             <h2 class="pixel-headline">[PROJECTS]</h2>
 
+            <!-- Project 1: SpeedBlitz -->
             <div class="project-row slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">Godot // work in progress // PC and controller and mobile</div>
@@ -344,9 +384,12 @@
                     <p style="color: var(--text-muted); margin-bottom: 15px;">A very unfinished rogue-like with fun movement.</p>
                     <a href="https://coz3erz-1000.itch.io/speedblitz-beta" target="_blank" class="launch-btn">OPEN ITCH.IO</a>
                 </div>
-                <div class="project-visual" id="media-speedblitz"></div>
+                <a href="https://coz3erz-1000.itch.io/speedblitz-beta" target="_blank" class="project-visual-link">
+                    <div class="project-visual" id="media-speedblitz"></div>
+                </a>
             </div>
 
+            <!-- Project 2: Masterpiece Prototype -->
             <div class="project-row reverse slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">Godot // abandoned // PC only</div>
@@ -354,9 +397,12 @@
                     <p style="color: var(--text-muted); margin-bottom: 15px;">A basic platformer experiment , fun map.</p>
                     <a href="https://coz3erz-1000.itch.io/masterpiece-prototype" target="_blank" class="launch-btn">OPEN ITCH.IO</a>
                 </div>
-                <div class="project-visual" id="media-masterpiece"></div>
+                <a href="https://coz3erz-1000.itch.io/masterpiece-prototype" target="_blank" class="project-visual-link">
+                    <div class="project-visual" id="media-masterpiece"></div>
+                </a>
             </div>
 
+            <!-- Project 3: Sonic Coz -->
             <div class="project-row slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">GX Games // abandoned // PC only</div>
@@ -364,9 +410,12 @@
                     <p style="color: var(--text-muted); margin-bottom: 15px;">Run through this surprisingly fun map while getting chased by, space alien things? Oh yeah and you can shoot lasers and there's these space trampolines.</p>
                     <a href="https://gx.games/games/q7ul7k/sonic-coz/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
-                <div class="project-visual" id="media-sonic"></div>
+                <a href="https://gx.games/games/q7ul7k/sonic-coz/" target="_blank" class="project-visual-link">
+                    <div class="project-visual" id="media-sonic"></div>
+                </a>
             </div>
 
+            <!-- Project 4: Flappy Crewmate -->
             <div class="project-row reverse slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">GX Games // finished // PC and mobile</div>
@@ -374,9 +423,12 @@
                     <p style="color: var(--text-muted); margin-bottom: 15px;">You're an Astronaut lost in the cosmos, this time, equipped with a jetpack. And for some reason there's these random pipes in space. Flap through this infinitely generated expanse of pipes.</p>
                     <a href="https://gx.games/games/9sgrn2/flappy-crewmate-/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
-                <div class="project-visual" id="media-flappy"></div>
+                <a href="https://gx.games/games/9sgrn2/flappy-crewmate-/" target="_blank" class="project-visual-link">
+                    <div class="project-visual" id="media-flappy"></div>
+                </a>
             </div>
 
+            <!-- Project 5: Baldi's Basics Scuffed -->
             <div class="project-row slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">GX Games // abandoned // PC only</div>
@@ -384,9 +436,12 @@
                     <p style="color: var(--text-muted); margin-bottom: 15px;">You sneak into the school at night. Baldi is furious. Principal is sleepy and can't see but can still hear you running. Do you have the guts to get your friend's notebooks and get out of there? This project is super unfinished and crashes freqeuntly.</p>
                     <a href="https://gx.games/games/w7rseo/baldi-s-basics-in-education-and-learning/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
-                <div class="project-visual" id="media-baldi"></div>
+                <a href="https://gx.games/games/w7rseo/baldi-s-basics-in-education-and-learning/" target="_blank" class="project-visual-link">
+                    <div class="project-visual" id="media-baldi"></div>
+                </a>
             </div>
 
+            <!-- Project 6: Voyage -->
             <div class="project-row reverse slide-trigger">
                 <div class="project-info">
                     <div class="game-meta">GX Games // finished // PC only</div>
@@ -394,7 +449,9 @@
                     <p style="color: var(--text-muted); margin-bottom: 15px;">You're an Astronaut lost in the cosmos, given a job to redirect missiles towards the threatening blackhole TON-618. humanity's fate rest in your hands. Will you overcome the hurdles of asteroids and planets. Or succumb to death? Fly through this infinitely generated game while avoiding wormholes, exploding stars, asteroids, and pick up cool power-ups along the way.</p>
                     <a href="https://gx.games/games/xdce1o/voyage/" target="_blank" class="launch-btn">OPEN GX GAMES</a>
                 </div>
-                <div class="project-visual" id="media-voyage"></div>
+                <a href="https://gx.games/games/xdce1o/voyage/" target="_blank" class="project-visual-link">
+                    <div class="project-visual" id="media-voyage"></div>
+                </a>
             </div>
 
         </div>
